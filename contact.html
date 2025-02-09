@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Players</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/football.png">
+    <script defer src="script.js"></script>
+    <style>
+        .players-container {
+            margin: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .player-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .player-info {
+            margin-bottom: 10px;
+        }
+
+        .player-info i {
+            margin-right: 8px;
+            color: var(--primary-color);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+
+        .facebook { background: url('images/facebook.png') center/cover no-repeat; }
+        .twitter {  background: url('images/instagram.png') center/cover no-repeat; }
+        .instagram {  background: url('images/twitter.png') center/cover no-repeat; }
+        .linkedin {  background: url('images/telegram.png') center/cover no-repeat; }
+
+        .player-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="players.html">Detail’s Player</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="about.html">About us</a></li>
+        </ul>
+    </nav>
+
+    <div class="players-container">
+        <script>
+            const players = [
+                { name: "Cheang", phone: "+123 456 7801", email: "cheang@example.com", address: "Amleang, Kampong Speu", photo: "images/Cheang.jpg" },
+                { name: "Denny", phone: "+123 456 7802", email: "player2@example.com", address: "Oudong, Kampong Speu", photo: "images/Denny.JPG" },
+                { name: "Hour", phone: "+123 456 7803", email: "player3@example.com", address: "Oudong, Kampong Speu", photo: "images/Hour.jpg" },
+                { name: "Kdey", phone: "+123 456 7804", email: "player4@example.com", address: "Oudong, Kampong Speu", photo: "images/Kdey.jpg" },
+                { name: "Lik", phone: "+123 456 7805", email: "player5@example.com", address: "Amleang, Kampong Speu", photo: "images/Lik.jpg" },
+                { name: "Vit", phone: "+123 456 7805", email: "player5@example.com", address: "Amleang, Kampong Speu", photo: "images/Vit.jpg" }
+            ];
+
+            document.write(
+                players.map(player => `
+                    <div class="player-card">
+                        <img src="${player.photo}" alt="${player.name}" class="player-photo">
+                        <h2>${player.name}</h2>
+                        <p class="player-info"><i class="fas fa-phone"></i> ${player.phone}</p>
+                        <p class="player-info"><i class="fas fa-envelope"></i> ${player.email}</p>
+                        <p class="player-info"><i class="fas fa-map-marker-alt"></i> ${player.address}</p>
+                        <div class="social-icons">
+                            <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>`
+                ).join('')
+            );
+        </script>
+    </div>
+</body>
+</html>

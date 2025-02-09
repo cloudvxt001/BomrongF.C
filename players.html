@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/football.png">
+    <script defer src="script.js"></script>
+    <style>
+        #players {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .players-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .player-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .player-card:hover {
+            transform: scale(1.05);
+        }
+
+        .player-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="players.html">Detail’s Player</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="about.html">About us</a></li>
+        </ul>
+    </nav>
+    <section id="players">
+        <h1>ក្រុមបស់ពួកអញ</h1>
+        <div class="players-container">
+            <div class="player-card">
+                <img src="images/Vit.jpg" alt="Player 1">
+                <h3>Vit</h3>
+                <p>Position: Goalkeeper</p>
+            </div>
+            <div class="player-card">
+                <img src="images/Kdey.jpg" alt="Player 2">
+                <h3>Kdey</h3>
+                <p>Position: Defender</p>
+            </div>
+            <div class="player-card">
+                <img src="images/Cheang.jpg" alt="Player 3">
+                <h3>Cheang</h3>
+                <p>Position: Defender</p>
+            </div>
+            <div class="player-card">
+                <img src="images/Hour.jpg" alt="Player 4">
+                <h3>Hour</h3>
+                <p>Position: Midfielder</p>
+            </div>
+            <div class="player-card">
+                <img src="images/Denny.JPG" alt="Player 5">
+                <h3>Denny</h3>
+                <p>Position: Midfielder</p>
+            </div>
+            <div class="player-card">
+                <img src="images/Lik.jpg" alt="Player 6">
+                <h3>Lik</h3>
+                <p>Position: Midfielder</p>
+            </div>
+            <div class="player-card">
+                <img src="images/player7.png" alt="Player 7">
+                <h3>Player 7</h3>
+                <p>Position: Forward</p>
+            </div>
+            <div class="player-card">
+                <img src="images/player8.png" alt="Player 8">
+                <h3>Player 8</h3>
+                <p>Position: Forward</p>
+            </div>
+            <div class="player-card">
+                <img src="images/player9.png" alt="Player 9">
+                <h3>Player 9</h3>
+                <p>Position: Forward</p>
+            </div>
+            <div class="player-card">
+                <img src="images/player10.png" alt="Player 10">
+                <h3>Player 10</h3>
+                <p>Position: Forward</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

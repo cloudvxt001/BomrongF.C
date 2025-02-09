@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/football.png">
+    <script defer src="script.js"></script>
+    <style>
+        .posters {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .posters img {
+            margin: 30px auto;
+            width: 80%;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .posters img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="players.html">Detail’s Player</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="about.html">About us</a></li>
+        </ul>
+    </nav>
+    <section id="home">
+        <h1>Welcome! ក្រុម បម្រើ F.C</h1>
+        <div class="posters">
+            <img src="images/795be4f2-69cf-4868-9bc8-43336ea4635b.png" alt="Team Poster">
+            <img src="images/cr7.webp" alt="Upcoming Match">
+        </div>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("Football project loaded successfully!");
+        });
+    </script>
+</body>
+</html>

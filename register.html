@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register to Vote</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/football.png">
+    <script defer src="script.js"></script>
+    <style>
+        .register-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+            margin: 20px auto;
+            margin-bottom: 20px;
+        }
+
+        input, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ff0000;
+        }
+
+        button {
+            background: var(--primary-color);
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: var(--secondary-color);
+            color: black;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #000000;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .action-btn {
+            background: red;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            width: 70px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .actions {
+            width: 100px;
+        }
+        .No {
+            width: 15px;
+        }
+        .date {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="players.html">Detail’s Player</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="about.html">About us</a></li>
+        </ul>
+    </nav>
+
+    <div class="register-container">
+        <h2>Vote for the Match</h2>
+        <input type="text" id="player-name" placeholder="Enter your name">
+        <button onclick="submitVote()">Vote</button>
+        <button onclick="clearVotes()" style="background: red;">Clear All Votes</button>
+        <p>Total Votes: <span id="vote-count">0</span></p>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th class="No">No</th>
+                <th>Name</th>
+                <th class="date">Date</th>
+                <th class="actions">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="vote-table"></tbody>
+    </table>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            updateVoteTable();
+        });
+
+        function formatDateTime(date) {
+            return new Intl.DateTimeFormat('en-US', {
+                month: 'short', day: '2-digit', year: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit',
+                hour12: true
+            }).format(date);
+        }
+
+        function submitVote() {
+            const playerName = document.getElementById("player-name").value.trim();
+            if (playerName === "") {
+                alert("Please enter your name before voting.");
+                return;
+            }
+            let votes = JSON.parse(localStorage.getItem("votes")) || [];
+            let dateTime = formatDateTime(new Date());
+            votes.push({ name: playerName, date: dateTime });
+            localStorage.setItem("votes", JSON.stringify(votes));
+            updateVoteTable();
+            document.getElementById("player-name").value = "";
+        }
+
+        function updateVoteTable() {
+            let votes = JSON.parse(localStorage.getItem("votes")) || [];
+            document.getElementById("vote-count").textContent = votes.length;
+            const tableBody = document.getElementById("vote-table");
+            tableBody.innerHTML = "";
+            votes.forEach((vote, index) => {
+                let row = `<tr>
+                    <td>${index + 1}</td>
+                    <td>${vote.name}</td>
+                    <td>${vote.date}</td>
+                    <td>
+                        <button class='action-btn' onclick='editVote(${index})'>Edit</button>
+                        <button class='action-btn' onclick='deleteVote(${index})'>Delete</button>
+                    </td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        function clearVotes() {
+            if (confirm("Are you sure you want to clear all votes?")) {
+                localStorage.removeItem("votes");
+                updateVoteTable();
+            }
+        }
+
+        function editVote(index) {
+            let votes = JSON.parse(localStorage.getItem("votes")) || [];
+            let newName = prompt("Edit your name:", votes[index].name);
+            if (newName) {
+                votes[index].name = newName.trim();
+                localStorage.setItem("votes", JSON.stringify(votes));
+                updateVoteTable();
+            }
+        }
+
+        function deleteVote(index) {
+            let votes = JSON.parse(localStorage.getItem("votes")) || [];
+            if (confirm("Are you sure you want to delete this vote?")) {
+                votes.splice(index, 1);
+                localStorage.setItem("votes", JSON.stringify(votes));
+                updateVoteTable();
+            }
+        }
+    </script>
+</body>
+</html>
